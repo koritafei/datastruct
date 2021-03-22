@@ -1,0 +1,7 @@
+add_executable(linklist list/main.cc list/list.hpp)
+add_executable(Vector vector/main.cc vector/vector.hpp)
+add_executable(Stack stack/stack.cc stack/stack.hpp)
+add_executable(BracketMatch stack/bracket_match.cc)
+add_executable(Ploy stack/ploy.cc)
+add_executable(Queue queue/queue.hpp queue/queue.cc)
+
