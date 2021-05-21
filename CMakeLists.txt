@@ -14,3 +14,4 @@ include_directories(${PROJECT_SOURCE_DIR}/sequencestruct . )
 
 add_subdirectory(sequencestruct)
 add_subdirectory(Tree)
+add_subdirectory(sort)
