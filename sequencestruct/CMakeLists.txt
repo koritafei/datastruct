@@ -4,4 +4,4 @@ add_executable(Stack stack/stack.cc stack/stack.hpp)
 add_executable(BracketMatch stack/bracket_match.cc)
 add_executable(Ploy stack/ploy.cc)
 add_executable(Queue queue/queue.hpp queue/queue.cc)
-
+add_executable(MaxIndexHeap heap/MaxIndexHeap.cc)
