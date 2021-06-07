@@ -4,7 +4,7 @@
  * @ Author       : koritafei(koritafei@gmail.com)
  * @ Date         : 2021-06-06 20:23:33
  * @ LastEditors  : koritafei(koritafei@gmail.com)
- * @ LastEditTime : 2021-06-06 21:03:00
+ * @ LastEditTime : 2021-06-07 15:18:20
  * @ FilePath     : /datastruct/graph/ShortestPath.h
  * @ Copyright (C) 2021 koritafei(koritafei@gmail.com). All rights reserved.
  * */
@@ -12,6 +12,7 @@
 #ifndef __SHORTEST_PATH_H__
 #define __SHORTEST_PATH_H__
 
+#include <iostream>
 #include <queue>
 #include <stack>
 #include <vector>
@@ -55,10 +56,10 @@ public:
     std::stack<int> s;
     int             p = w;
     while (p != -1) {
-      s.push_back(p);
+      s.push(p);
       p = from[p];
     }
-    vec.clear();
+    path.clear();
     while (!s.empty()) {
       path.push_back(s.top());
       s.pop();
@@ -66,7 +67,7 @@ public:
   }
 
   void showPath(int w) const {
-    std::vector<int>& res;
+    std::vector<int> res;
     path(w, res);
     for (auto item : res) {
       std::cout << item << " ";
