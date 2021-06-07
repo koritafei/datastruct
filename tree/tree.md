@@ -92,6 +92,11 @@ struct BinaryNode {
    a. 如果非叶子节点, 将`isEnd`置为`0`;
    b. 对叶子节点，从`stack`开始删除，直到栈顶节点为飞叶子节点，或`isEnd`为1.
 
+## 并查集
+对一组数据主要支持两个操作：
+1. union(p,q) // 连接p和q
+2. find(p) // 查找p
+
 
 
 
