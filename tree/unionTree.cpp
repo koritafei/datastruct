@@ -4,7 +4,7 @@
  * @ Author       : koritafei(koritafei@gmail.com)
  * @ Date         : 2021-06-02 15:59:46
  * @ LastEditors  : koritafei(koritafei@gmail.com)
- * @ LastEditTime : 2021-06-03 16:29:44
+ * @ LastEditTime : 2021-06-08 17:29:10
  * @ FilePath     : /datastruct/tree/unionTree.cpp
  * @ Copyright (C) 2021 koritafei(koritafei@gmail.com). All rights reserved.
  * */
@@ -14,7 +14,7 @@ class Union {
 public:
   Union(int n) : count(n) {
     parent = new int[n];
-    sz     = new int[n];
+    rank   = new int[n];
     for (int i = 0; i < n; i++) {
       parent[i] = i;
       rank[i]   = 1;
