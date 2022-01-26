@@ -13,9 +13,9 @@
 #include <vector>
 
 template <typename T>
-int lineSearch(std::vector<T> &vec, T target) {
-  int len = vec.size();
-  for (int i = 0; i < len; i++) {
+unsigned long lineSearch(std::vector<T> &vec, T target) {
+  unsigned long len = vec.size();
+  for (unsigned long i = 0; i < len; i++) {
     if (vec[i] == target) {
       return i;
     }

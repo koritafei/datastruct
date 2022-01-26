@@ -2,15 +2,51 @@ cmake_minimum_required(VERSION 3.10.0)
 
 project(datastruct)
 
-add_definitions(-std=c++11)
+set(CXX_FLAGS
+ -g
+ # -DVALGRIND
+ -DCHECK_PTHREAD_RETURN_VALUE
+ -D_FILE_OFFSET_BITS=64
+ -Wall
+ -Wextra
+ -Werror
+ -Wconversion
+ -Wno-unused-parameter
+ -Wold-style-cast
+ -Woverloaded-virtual
+ -Wpointer-arith
+ -Wshadow
+ -Wwrite-strings
+ -march=native
+ # -MMD
+ -std=c++2a
+ -rdynamic
+ -fsanitize=address
+ )
 
-set(CMAKE_CXX_STANDARD 11)
+if(CMAKE_PROJECT_NAME STREQUAL "datastruct")
+  option(DATA_STRUCT_BUILD_EXAMPLES "Build datastruct examples" ON)
+endif()
 
-SET(CMAKE_BUILD_TYPE "Debug")  
-SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb")  
-SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")  
+if(CMAKE_BUILD_BITS EQUAL 32)
+  list(APPEND CXX_FLAGS "-m32")
+endif()
+if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+  list(APPEND CXX_FLAGS "-Wno-null-dereference")
+  list(APPEND CXX_FLAGS "-Wno-sign-conversion")
+  list(APPEND CXX_FLAGS "-Wno-unused-local-typedef")
+  list(APPEND CXX_FLAGS "-Wthread-safety")
+  list(REMOVE_ITEM CXX_FLAGS "-rdynamic")
+endif()
+string(REPLACE ";" " " CMAKE_CXX_FLAGS "${CXX_FLAGS}")
+
+set(CMAKE_CXX_FLAGS_DEBUG "-O0")
+set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 include_directories(${PROJECT_SOURCE_DIR}/sequencestruct . )
+include_directories(${PROJECT_SOURCE_DIR} . )
 
 add_subdirectory(sequencestruct)
 add_subdirectory(Tree)
@@ -19,3 +55,4 @@ add_subdirectory(search)
 add_subdirectory(graph)
 add_subdirectory(weightgraph)
 add_subdirectory(graphpath)
+add_subdirectory(link)

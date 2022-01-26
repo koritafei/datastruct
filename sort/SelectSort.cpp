@@ -13,11 +13,11 @@
 
 template <class T>
 void SelectSort(std::vector<T> &nums) {
-  int len      = nums.size();
-  int minIndex = 0;
-  for (int i = 0; i < len - 1; i++) {
+  unsigned long len      = nums.size();
+  unsigned long minIndex = 0;
+  for (unsigned long i = 0; i < len - 1; i++) {
     minIndex = i;
-    for (int j = i + 1; j < len; j++) {
+    for (unsigned long j = i + 1; j < len; j++) {
       if (nums[j] < nums[minIndex]) {
         minIndex = j;
       }

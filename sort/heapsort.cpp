@@ -9,6 +9,7 @@
  * @ Copyright (C) 2021 koritafei(koritafei@gmail.com). All rights reserved.
  * */
 
+#include <cassert>
 #include <iostream>
 #include <vector>
 
@@ -90,7 +91,7 @@ private:
 template <class Item>
 class MinHeap {
 public:
-  MinHeap(int capacity) : count_(0), capacity_(capacity) {
+  MinHeap(unsigned long capacity) : count_(0), capacity_(capacity) {
     data_ = new Item[capacity + 1];
   }
 
@@ -112,18 +113,18 @@ public:
   void insertItem(Item item) {
     assert(count_ < capacity_);
     data_[count_] = item;
-    shiftUp(count_);
+    shiftUp(static_cast<int>(count_));
     count_++;
   }
 
   void print() const {
-    for (int i = 0; i < count_; i++) {
+    for (int i = 0; i < static_cast<int>(count_); i++) {
       std::cout << data_[i] << " ";
     }
     std::cout << std::endl;
   }
 
-  int size() const {
+  unsigned long size() const {
     return count_;
   }
 
@@ -140,9 +141,9 @@ private:
   }
 
   void shiftDown(int index) {
-    while (index * 2 + 1 < count_) {
+    while (index * 2 + 1 < static_cast<int>(count_)) {
       int k = index * 2 + 1;
-      if (k + 1 < count_ && data_[k] > data_[k + 1]) {
+      if (k + 1 < static_cast<int>(count_) && data_[k] > data_[k + 1]) {
         k++;
       }
       if (data_[index] <= data_[k]) {
@@ -153,15 +154,15 @@ private:
     }
   }
 
-  Item *data_;
-  int   count_;
-  int   capacity_;
+  Item         *data_;
+  unsigned long count_;
+  unsigned long capacity_;
 };
 
 template <class T>
-void __shiftDown(std::vector<T> &arr, int n, int k) {
+void __shiftDown(std::vector<T> &arr, unsigned long n, unsigned long k) {
   while (2 * k + 1 < n) {
-    int j = 2 * k + 1;
+    unsigned long j = 2 * k + 1;
     if (j + 1 < n && arr[j] < arr[j + 1]) {
       j++;
     }
@@ -174,8 +175,8 @@ void __shiftDown(std::vector<T> &arr, int n, int k) {
 }
 
 template <class T>
-void heapSort(std::vector<T> &arr, int n) {
-  for (int i = (n - 1) / 2; i >= 0; i--) {
+void heapSort(std::vector<T> &arr, unsigned long n) {
+  for (int i = (static_cast<int>(n - 1)) / 2; i >= 0; i--) {
     __shiftDown(arr, n, i);
   }
   for (auto item : arr) {
@@ -183,7 +184,7 @@ void heapSort(std::vector<T> &arr, int n) {
   }
   std::cout << std::endl;
 
-  for (int i = n - 1; i >= 0; i--) {
+  for (int i = static_cast<int>(n - 1); i >= 0; i--) {
     std::swap(arr[0], arr[i]);
     for (auto item : arr) {
       std::cout << item << " ";

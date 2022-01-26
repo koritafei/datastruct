@@ -23,10 +23,10 @@
 
 template <class T>
 void InsertSort(std::vector<T> &nums) {
-  int len = nums.size();
-  for (int i = 1; i < len; i++) {
-    int e = nums[i];
-    int j;
+  unsigned long len = nums.size();
+  for (unsigned long i = 1; i < len; i++) {
+    int           e = nums[i];
+    unsigned long j;
     for (j = i; j > 0 && nums[j - 1] > e; j--) {
       nums[j] = nums[j - 1];
     }

@@ -9,8 +9,8 @@
  * @ Copyright (C) 2021 koritafei(koritafei@gmail.com). All rights reserved.
  * */
 
-#ifndef __SPARSE_GRAPH_H__
-#define __SPARSE_GRAPH_H__
+#ifndef __SPARSEGRAPH_H__
+#define __SPARSEGRAPH_H__
 
 #include <iostream>
 #include <vector>
@@ -42,8 +42,8 @@ public:
     m++;
   }
 
-  bool hasEdge(int v, int w) const {
-    for (int i = 0; i < edge[v].size(); i++) {
+  bool hasEdge(int v, int64_t w) const {
+    for (int i = 0; i < static_cast<int>(edge[v].size()); i++) {
       if (edge[v][i] == w) {
         return true;
       }
@@ -53,7 +53,7 @@ public:
 
   class adjIterator {
   public:
-    adjIterator(SparseGraph &g, int v) : graph(g), v(v), index(0) {
+    adjIterator(SparseGraph &g, int v) : graph(g), index(0), v(v) {
     }
 
     ~adjIterator() {
@@ -70,14 +70,14 @@ public:
 
     int next() {
       index++;
-      if (index < graph.edge[v].size()) {
+      if (index < static_cast<int>(graph.edge[v].size())) {
         return index;
       }
       return -1;
     }
 
     bool end() const {
-      return index >= graph.edge[v].size();
+      return index >= static_cast<int>(graph.edge[v].size());
     }
 
   private:
@@ -93,4 +93,4 @@ private:
   std::vector<std::vector<int>> edge;      // 边
 };
 
-#endif /* __SPARSE_GRAPH_H__ */
+#endif /* __SPARSEGRAPH_H__ */

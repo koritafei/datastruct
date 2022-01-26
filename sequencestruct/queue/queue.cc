@@ -1,4 +1,4 @@
-#include "queue/queue.hpp"
+#include "queue.h"
 
 int main(int argc, char **argv) {
   std::cout << "Hello, Queue" << std::endl;

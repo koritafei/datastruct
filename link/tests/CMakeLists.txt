@@ -1,0 +1,6 @@
+add_executable(link_unittest link_unittest.cc)
+target_link_libraries(link_unittest data_struct_base)
+
+add_executable(array_unittest array_unittest.cc)
+
+add_executable(skiplist_unittest skiplist_unittest.cc)

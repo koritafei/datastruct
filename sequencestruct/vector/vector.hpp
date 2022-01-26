@@ -17,8 +17,7 @@ template <typename T>
 class Vector {
 public:
   explicit Vector(size_t size = 0)
-      : size_(size),
-        capacity_(size + SPARE_CAPACITY) {
+      : size_(size), capacity_(size + SPARE_CAPACITY) {
     data_ = new T[size];
   }
 
@@ -72,11 +71,11 @@ public:
     return data_[index];
   }
 
-  int size() const {
+  size_t size() const {
     return size_;
   }
 
-  int capacity() const {
+  size_t capacity() const {
     return capacity_;
   }
 

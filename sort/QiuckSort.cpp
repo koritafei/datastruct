@@ -13,10 +13,12 @@
 #include <vector>
 
 template <class T>
-int __paration(std::vector<T> &nums, int start, int end) {
-  T   v = nums[start];
-  int j = start;
-  for (int i = start + 1; i <= end; i++) {
+unsigned long __paration(std::vector<T> &nums,
+                         unsigned long   start,
+                         unsigned long   end) {
+  T             v = nums[start];
+  unsigned long j = start;
+  for (unsigned long i = start + 1; i <= end; i++) {
     if (nums[i] < v) {
       std::swap(nums[j++], nums[i]);
     }
@@ -27,12 +29,12 @@ int __paration(std::vector<T> &nums, int start, int end) {
 }
 
 template <class T>
-void __quicksort(std::vector<T> &nums, int start, int end) {
+void __quicksort(std::vector<T> &nums, unsigned long start, unsigned long end) {
   if (start >= end) {
     return;
   }
 
-  int p = __paration(nums, start, end);
+  unsigned long p = __paration(nums, start, end);
   __quicksort(nums, start, p - 1);
   __quicksort(nums, p + 1, end);
 }
@@ -44,9 +46,11 @@ void quicksort(std::vector<T> &nums) {
 
 // 改进快排，针对含有大量的重复元素
 template <class T>
-int __paration2(std::vector<T> &nums, int start, int end) {
-  T   key = nums[start];
-  int i = start + 1, j = end;
+unsigned long __paration2(std::vector<T> &nums,
+                          unsigned long   start,
+                          unsigned long   end) {
+  T             key = nums[start];
+  unsigned long i = start + 1, j = end;
   while (true) {
     while (i <= end && nums[i] < key) {
       i++;
@@ -68,12 +72,14 @@ int __paration2(std::vector<T> &nums, int start, int end) {
 }
 
 template <class T>
-void __quicksort2(std::vector<T> &nums, int start, int end) {
+void __quicksort2(std::vector<T> &nums,
+                  unsigned long   start,
+                  unsigned long   end) {
   if (start >= end) {
     return;
   }
 
-  int p = __paration2(nums, start, end);
+  unsigned long p = __paration2(nums, start, end);
   __quicksort2(nums, start, p - 1);
   __quicksort2(nums, p + 1, end);
 }
@@ -86,15 +92,15 @@ void quicksort2(std::vector<T> &nums) {
 // 三路归并
 
 template <class T>
-void __quicksort3Ways(std::vector<T> &nums, int l, int r) {
+void __quicksort3Ways(std::vector<T> &nums, unsigned long l, unsigned long r) {
   if (l >= r) {
     return;
   }
 
-  int lt  = l;
-  int gt  = r;
-  int i   = l + 1;
-  T   key = nums[l];
+  unsigned long lt  = l;
+  unsigned long gt  = r;
+  unsigned long i   = l + 1;
+  T             key = nums[l];
 
   while (i < gt) {
     if (nums[i] < key) {  // nums[l...lt] < key
@@ -114,7 +120,7 @@ void __quicksort3Ways(std::vector<T> &nums, int l, int r) {
 
 template <class T>
 void quicksort3Ways(std::vector<T> &nums) {
-  int len = nums.size();
+  unsigned long len = nums.size();
   __quicksort3Ways(nums, 0, len - 1);
 }
 

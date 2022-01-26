@@ -9,8 +9,8 @@
  * @ Copyright (C) 2021 koritafei(koritafei@gmail.com). All rights reserved.
  * */
 
-#ifndef __DENSE_GRAPH__
-#define __DENSE_GRAPH__
+#ifndef __DENSEGRAPH_H__
+#define __DENSEGRAPH_H__
 
 #include <iostream>
 #include <vector>
@@ -51,7 +51,7 @@ public:
 
   class adjIterator {
   public:
-    adjIterator(DenseGraph &g, int v) : graph(g), v(v), index(-1) {
+    adjIterator(DenseGraph &g, int v) : graph(g), index(-1), v(v) {
     }
 
     ~adjIterator() {
@@ -88,4 +88,4 @@ private:
   std::vector<std::vector<bool>> edge;  // 边的矩阵
 };
 
-#endif /* __DENSE_GRAPH__ */
+#endif /* __DENSEGRAPH_H__ */

@@ -9,6 +9,9 @@
  *
  */
 
+#ifndef __QUEUE_H__
+#define __QUEUE_H__
+
 #ifndef __QUEUE__H__
 #define __QUEUE__H__
 
@@ -96,7 +99,7 @@ private:
    *
    */
   void resize() {
-    T *    old     = data_;
+    T     *old     = data_;
     size_t old_cap = cap_;
     cap_ <<= 1;
     data_ = new T[cap_];
@@ -113,10 +116,12 @@ private:
   }
 
   const size_t capacity = 20;
-  T *          data_;
+  T           *data_;
   size_t       cap_;
   size_t       front_;
   size_t       back_;
 };
 
 #endif  //!__QUEUE__H__
+
+#endif /* __QUEUE_H__ */

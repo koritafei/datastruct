@@ -21,20 +21,23 @@ void print(const std::vector<T> &nums) {
 }
 
 template <class T>
-void merge(std::vector<T> &nums, int start, int mid, int end) {
-  int            len1 = mid - start + 1;
-  int            len2 = end - mid;
+void merge(std::vector<T> &nums,
+           unsigned long   start,
+           unsigned long   mid,
+           unsigned long   end) {
+  unsigned long  len1 = mid - start + 1;
+  unsigned long  len2 = end - mid;
   std::vector<T> n1;
   std::vector<T> n2;
-  for (int i = start; i <= mid; i++) {
+  for (unsigned long i = start; i <= mid; i++) {
     n1.push_back(nums[i]);
   }
-  for (int i = mid + 1; i <= end; i++) {
+  for (unsigned long i = mid + 1; i <= end; i++) {
     n2.push_back(nums[i]);
   }
 
-  int i = 0, j = 0;
-  int k = start;
+  unsigned long i = 0, j = 0;
+  unsigned long k = start;
   while (i < len1 && j < len2) {
     if (n1[i] < n2[j]) {
       nums[k++] = n1[i++];
@@ -53,21 +56,21 @@ void merge(std::vector<T> &nums, int start, int mid, int end) {
 }
 
 template <class T>
-void mergeSortBU(std::vector<T> &nums, int len) {
-  for (int sz = 1; sz <= len; sz += sz) {
-    for (int i = 0; i + sz <= len; i += sz + sz) {
+void mergeSortBU(std::vector<T> &nums, unsigned long len) {
+  for (unsigned long sz = 1; sz <= len; sz += sz) {
+    for (unsigned long i = 0; i + sz <= len; i += sz + sz) {
       merge(nums, i, i + sz - 1, std::min(i + sz + sz - 1, len - 1));
     }
   }
 }
 
 template <class T>
-void mergeSort(std::vector<T> &nums, int l, int r) {
+void mergeSort(std::vector<T> &nums, unsigned long l, unsigned long r) {
   if (l >= r) {
     return;
   }
 
-  int mid = l + (r - l) / 2;
+  unsigned long mid = l + (r - l) / 2;
   mergeSort(nums, l, mid);
   mergeSort(nums, mid + 1, r);
   merge<T>(nums, l, mid, r);

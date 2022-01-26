@@ -23,21 +23,23 @@ void printVector(std::vector<T> &nums) {
 }
 
 template <class T>
-int mergeSort(std::vector<T> &nums, int start, int end) {
+unsigned long mergeSort(std::vector<T> &nums,
+                        unsigned long   start,
+                        unsigned long   end) {
   if (start >= end) {
     return 0;
   }
 
-  int mid   = start + (end - start) / 2;
-  int left  = mergeSort(nums, start, mid);
-  int right = mergeSort(nums, mid + 1, end);
+  unsigned long mid   = start + (end - start) / 2;
+  unsigned long left  = mergeSort(nums, start, mid);
+  unsigned long right = mergeSort(nums, mid + 1, end);
 
   std::vector<T> copy(nums.size());
 
-  int count = 0;
-  int i     = mid;
-  int j     = end;
-  int k     = end;
+  unsigned long count = 0;
+  unsigned long i     = mid;
+  unsigned long j     = end;
+  unsigned long k     = end;
   while (i >= start && j >= mid + 1) {
     if (nums[i] > nums[j]) {
       copy[k--] = nums[i--];
@@ -54,7 +56,7 @@ int mergeSort(std::vector<T> &nums, int start, int end) {
     copy[k--] = nums[j--];
   }
 
-  for (int t = start; t <= end; t++) {
+  for (unsigned long t = start; t <= end; t++) {
     nums[t] = copy[t];
   }
 

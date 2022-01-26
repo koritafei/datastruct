@@ -62,6 +62,6 @@ int main(int argc, char **argv) {
   std::vector<int> nums = {1, 10, 8, 2, 6, 1};
   int              k    = 4;
   printVector(nums);
-  int num = findKthLarge(nums, 0, nums.size() - 1, k);
+  int num = findKthLarge(nums, 0, static_cast<int>(nums.size() - 1), k);
   std::cout << k << '\t' << num << std::endl;
 }

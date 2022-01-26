@@ -23,9 +23,9 @@ public:
    * @return std::string
    */
   std::string prefix_ploy(std::string &source) {
-    int         len = source.length();
-    std::string res;
-    std::string number;
+   int len = source.length();
+    std::string   res;
+    std::string   number;
     for (int i = len - 1; i >= 0; i--) {
       res.clear();
       if (!is_space(source[i])) {
@@ -65,10 +65,10 @@ public:
    * @return std::string
    */
   std::string ploy_back(std::string &source) {
-    int         len = source.length();
+    size_t      len = source.length();
     std::string result;
     std::string number;
-    for (int i = 0; i < len; i++) {
+    for (size_t i = 0; i < len; i++) {
       number.clear();
       if (!isspace(source[i])) {
         char_to_string(source[i], number);
